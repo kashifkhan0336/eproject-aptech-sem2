@@ -15,16 +15,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string("username",28);
+            $table->string("username",28)->default("mastermind0336");
             $table->string("password");
-            $table->string("firstName",255);
-            $table->string("lastName",255);
+            $table->timestamp("deleted_at");
+            $table->string("name")->default("Kashif Khan");
+            $table->string("firstName",255)->nullable();
+            $table->string("lastName",255)->nullable();
             $table->string("email",255);
-            $table->string("role")->default("customer");
+            $table->string('remember_token', 100)->nullable();
+            $table->string("role")->nullable();
+            $table->bigInteger('base_id')->unsigned();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

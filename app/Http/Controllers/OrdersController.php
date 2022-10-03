@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orders;
+use App\Models\Order;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
 
@@ -42,10 +42,10 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Orders  $orders
+     * @param  \App\Models\Order  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(Orders $orders)
+    public function show(Order $orders)
     {
         //
     }
@@ -53,10 +53,10 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Orders  $orders
+     * @param  \App\Models\Order  $orders
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orders $orders)
+    public function edit(Order $orders)
     {
         //
     }
@@ -65,10 +65,10 @@ class OrdersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateOrdersRequest  $request
-     * @param  \App\Models\Orders  $orders
+     * @param  \App\Models\Order  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrdersRequest $request, Orders $orders)
+    public function update(UpdateOrdersRequest $request, Order $orders)
     {
         //
     }
@@ -76,10 +76,10 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Orders  $orders
+     * @param  \App\Models\Order  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orders $orders)
+    public function destroy(Order $orders)
     {
         //
     }

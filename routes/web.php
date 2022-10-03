@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customer-login');
 });
-Route::get("/customer/profile", []);
-Route::match(array('GET','POST'),'/customer/register', [UsersController::class, 'create']);
+Route::get('/customer/login', [UsersController::class, 'loginIndex']);
+Route::post('/customer/login', [UsersController::class, 'login']);
+Route::get('/customer/register', [UsersController::class, 'registerIndex']);
+Route::post('/customer/register', [UsersController::class, 'register']);
+#Route::match(array('GET','POST'),'/customer/register', [UsersController::class, 'register']);

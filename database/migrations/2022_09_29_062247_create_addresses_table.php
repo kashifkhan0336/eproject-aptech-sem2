@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger("user_id")->unsigned();
+            $table->string("address",2000);
+            $table->string("city",86);
+            $table->string("postal_code",12);
+            $table->string("mobile_number",14);
+            $table->foreign('user_id')->references("id")->on("customers");
             $table->timestamps();
         });
     }

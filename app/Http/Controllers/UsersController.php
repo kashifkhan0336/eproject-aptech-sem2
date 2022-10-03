@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\Customer;
 use App\Models\Users;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,25 +19,43 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function loginIndex()
     {
+         return view("customer-login");
         //
     }
-
+    public function registerIndex(){
+        return view("welcome");
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(RegisterUserRequest $request)
+    public function register(RegisterUserRequest $request)
     {
         $validated = $request->safe()->all();
         $validated["password"]=Hash::make($validated["password"]);
-        #Auth::login(Users::create($validated));
-        return view("customer");
+        Users::create($validated);
+        #Auth::login();
         //
     }
+    public function login(LoginUserRequest $request){
+        $validated = $request->safe()->all();
+        $signedIn = Users::where("username", $validated["username"]);
+        //return $signedIn->get() != null;
+        if(count($signedIn->get())){
+//            return "User found" . count($signedIn->get());
+            if(Hash::check($validated["password"], $signedIn->value("password")))
+            {
+                return "Password Correct!";
+            }else{
+                return redirect("/customer/login")->withErrors(["password"=>"Wrong Password"]);
+            }
+        }
+        return redirect("/customer/login")->withErrors(["nouser"=>"No User by this name exist"]);
 
+    }
     /**
      * Store a newly created resource in storage.
      *

@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger("user_id")->unsigned();
+            $table->integer("delivery_type");
+            $table->string("status")->default("pending");
+            $table->bigInteger("product_id")->unsigned();
+            $table->integer("order_number")->unique();
+            $table->foreign("user_id")->references("id")->on("customers");
+            $table->foreign("product_id")->references("id")->on("products");
+            $table->timestamp("ordered_on")->useCurrent();
             $table->timestamps();
         });
     }

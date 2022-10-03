@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Users;
@@ -20,4 +21,14 @@ Artisan::command('inspire', function () {
 
 Artisan::command('fresh', function (){
    Users::factory()->count(1)->create();
+    Category::factory()
+        ->count(5)
+        ->sequence(
+            ["name" => "Files & Folders","desc" => "A category of Files & Folders"],
+            ["name" => "Arts","desc" => "A category of Arts Items"],
+            ["name" => "Dolls", "desc" => "A category of Dolls"],
+            ["name" => "Hand Bags","desc"=>"A category of Hand Bags"],
+            ["name" => "Greeting Cards", "desc" => "A category of Greeting Cards"]
+        )
+        ->create();
 });

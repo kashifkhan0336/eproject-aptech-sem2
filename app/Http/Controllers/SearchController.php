@@ -10,7 +10,8 @@ class SearchController extends Controller
 {
     public function search($term)
     {
-        return Product::search($term)->get();
+        $allProducts = Product::search($term)->get();
+        return view("product.search-results", ["allProducts"=>$allProducts]);
     }
     //
 }

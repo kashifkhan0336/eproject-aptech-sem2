@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FeedbackController;
@@ -32,8 +33,8 @@ Route::get("/login-signup", [CustomerController::class, 'show'])->name("customer
 Route::post('/login-customer', [CustomerController::class, 'login'])->name("login-customer");
 Route::post('/register-customer', [CustomerController::class, 'register'])->name("register-customer");
 Route::get("/account", [CustomerController::class, 'account'])->name("customer-account")->middleware("auth:customer");
-Route::get("/cart", [CustomerController::class, 'cart'])->name("customer-cart")->middleware("auth:customer");
+Route::get("/cart", [CartController::class, 'index'])->name("customer-cart")->middleware("auth:customer");
 Route::get("/logout", [CustomerController::class, 'logout'])->name("customer-logout")->middleware("auth:customer");
-Route::post("/cart/add/{product_id}", [CustomerController::class, 'cartAdd'])->name("customer-cart-add")->middleware("auth:customer");
-Route::post("/cart/remove/{product_id}", [CustomerController::class, 'cartRemove'])->name("customer-cart-remove")->middleware("auth:customer");
+Route::get("/cart/add/{product_id}", [CartController::class, 'store'])->name("customer-cart-add")->middleware("auth:customer");
+Route::get("/cart/remove/{product_id}", [CartController::class, 'destroy'])->name("customer-cart-remove")->middleware("auth:customer");
 #Route::match(array('GET','POST'),'/customer/register', [UsersController::class, 'register']);

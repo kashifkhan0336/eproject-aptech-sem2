@@ -44,7 +44,7 @@ class CustomerController extends Controller
     }
 
     public function cart(){
-        return view("customer.cart");
+
     }
     public function logout(Request $request)
     {

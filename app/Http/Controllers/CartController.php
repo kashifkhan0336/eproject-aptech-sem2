@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use App\Models\Product;
+use App\Models\Customer;
+use Auth;
+use Illuminate\Routing\Controller;
 
 class CartController extends Controller
 {
@@ -15,6 +19,12 @@ class CartController extends Controller
      */
     public function index()
     {
+        $customer = Auth::user();
+        $cart =collect( Cart::where("customer_id", $customer->id)->get())->map(function ($product){
+            return Product::where("id", $product->id)->first();
+        });
+
+        return view("customer.cart",["cart"=>$cart]);
         //
     }
 
@@ -25,6 +35,7 @@ class CartController extends Controller
      */
     public function create()
     {
+
         //
     }
 
@@ -34,9 +45,13 @@ class CartController extends Controller
      * @param  \App\Http\Requests\StoreCartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCartRequest $request)
+    public function store($product_id)
     {
-        //
+        $customer = Auth::user();
+        $productInstance = new Product();
+        $product = $productInstance::where("product_id", $product_id)->first();
+        $customer->cart()->create(["customer_id" => $customer->id, "product_id" => $product->id]);
+        return "Product added!";
     }
 
     /**

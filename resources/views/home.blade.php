@@ -139,7 +139,7 @@
                                         <img src="{{ $product->getMedia("main-image")[0]->getFullUrl() }}" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
-                                        <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
+                                        <li><a href="{{ route("customer-cart-add",["product_id"=>$product->product_id]) }}"><i class="ion-android-cart"></i> Add to cart</a></li>
                                     </ul>
                                     <div class="tm-product-badges">
                                         <span class="tm-product-badges-new">New</span>
@@ -147,13 +147,6 @@
                                 </div>
                                 <div class="tm-product-bottomside">
                                     <h6 class="tm-product-title"><a href="{{ route("product.show", ["id"=>$product->product_id]) }}">{{ $product->name }}</a></h6>
-                                    <div class="tm-ratingbox">
-                                        <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                        <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                        <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                        <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                        <span><i class="ion-android-star-outline"></i></span>
-                                    </div>
                                     <span class="tm-product-price">{{ $product->price }}</span>
                                     <div class="tm-product-content">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -163,7 +156,8 @@
                                             type specimen book. It has survived not only five centuries, but also the
                                             leap into electronic typesetting.</p>
                                         <ul class="tm-product-actions">
-                                            <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
+                                            <li>
+                                                <a href="{{ route("customer-cart-add",["product_id"=>$product->product_id]) }}"><i class="ion-android-cart"></i> Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -223,10 +217,7 @@
                                             type specimen book. It has survived not only five centuries, but also the
                                             leap into electronic typesetting.</p>
                                         <ul class="tm-product-actions">
-                                            <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
-                                            <li><button data-fancybox data-src="#tm-product-quickview"><i
-                                                        class="ion-eye"></i></button></li>
-                                            <li><a href="#"><i class="ion-heart"></i></a></li>
+                                            <li><a href="{{ route("customer-cart-add",["product_id"=>$product->product_id]) }}"><i class="ion-android-cart"></i> Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -32,11 +32,22 @@ class Product extends Model implements HasMedia
         return $this->name;
 
     }
+    public function cart(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
+    /**
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->width(510)
             ->height(680);
+
+        $this->addMediaConversion('cart')
+            ->width(120)
+            ->height(160);
     }
     protected $casts =[
         "main_image"=>"string"

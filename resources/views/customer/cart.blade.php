@@ -4,7 +4,9 @@
 @include("partials.head")
 
 <body>
-
+@foreach($cart as $item)
+    <p>{{ $item->stock}}</p>
+@endforeach
 
 <!-- Wrapper -->
 <div id="wrapper" class="wrapper">
@@ -49,31 +51,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <a href="product-details.html" class="tm-cart-productimage">
-                                    <img src="assets/images/products/product-image-1-thumb.jpg"
-                                         alt="product image">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="product-details.html" class="tm-cart-productname">Stylist
-                                    daimond
-                                    earring</a>
-                            </td>
-                            <td class="tm-cart-price">$75.00</td>
-                            <td>
-                                <div class="tm-quantitybox">
-                                    <input type="text" value="1">
-                                </div>
-                            </td>
-                            <td>
-                                <span class="tm-cart-totalprice">$75.00</span>
-                            </td>
-                            <td>
-                                <button class="tm-cart-removeproduct"><i class="ion-close"></i></button>
-                            </td>
-                        </tr>
+
                         <tr>
                             <td>
                                 <a href="product-details.html" class="tm-cart-productimage">

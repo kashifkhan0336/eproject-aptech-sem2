@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Feedback;
 use App\Http\Requests\StoreFeedbackRequest;
 use App\Http\Requests\UpdateFeedbackRequest;
+use Illuminate\Routing\Controller;
 
 class FeedbackController extends Controller
 {
@@ -23,8 +24,11 @@ class FeedbackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(StoreFeedbackRequest $request)
     {
+        $validated = $request->safe()->all();
+        Feedback::create($validated);
+        return "We have recieved you're feedback";
         //
     }
 
@@ -36,6 +40,7 @@ class FeedbackController extends Controller
      */
     public function store(StoreFeedbackRequest $request)
     {
+
         //
     }
 
@@ -47,6 +52,7 @@ class FeedbackController extends Controller
      */
     public function show(Feedback $feedback)
     {
+        return view("miscellaneous.feedback");
         //
     }
 

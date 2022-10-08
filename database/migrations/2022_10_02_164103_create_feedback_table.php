@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->string("name",65);
+            $table->string("email",254);
+            $table->string("phone", 15);
+            $table->string("subject",65);
+            $table->string("message");
+            $table->timestamp("received_on")->useCurrent();
             $table->timestamps();
         });
     }

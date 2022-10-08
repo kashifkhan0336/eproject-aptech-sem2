@@ -18,6 +18,7 @@ class CustomerPolicy
      */
     public function viewAny(Users $users)
     {
+        return true;
         //
     }
 
@@ -30,6 +31,7 @@ class CustomerPolicy
      */
     public function view(Users $users, Customer $customer)
     {
+        return true;
         //
     }
 
@@ -41,7 +43,7 @@ class CustomerPolicy
      */
     public function create(Users $users)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +55,7 @@ class CustomerPolicy
      */
     public function update(Users $users, Customer $customer)
     {
-        //
+        return true;
     }
 
     /**
@@ -65,7 +67,7 @@ class CustomerPolicy
      */
     public function delete(Users $users, Customer $customer)
     {
-        //
+        return true;
     }
 
     /**

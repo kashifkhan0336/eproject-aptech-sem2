@@ -31,6 +31,7 @@ class FeedbackPolicy
      */
     public function view(Users $users, Feedback $feedback)
     {
+        return true;
         //
     }
 

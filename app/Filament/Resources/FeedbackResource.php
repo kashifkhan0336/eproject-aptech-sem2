@@ -18,15 +18,30 @@ class FeedbackResource extends Resource
     protected static ?string $model = Feedback::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static function getNavigationBadge(): ?string
-    {
-        return static::getModel()::count();
-    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(65),
+                Forms\Components\TextInput::make('email')
+                    ->email()
+                    ->required()
+                    ->maxLength(254),
+                Forms\Components\TextInput::make('phone')
+                    ->tel()
+                    ->required()
+                    ->maxLength(15),
+                Forms\Components\TextInput::make('subject')
+                    ->required()
+                    ->maxLength(65),
+                Forms\Components\Textarea::make('message')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\DateTimePicker::make('received_on')
+                    ->required(),
             ]);
     }
 
@@ -34,7 +49,12 @@ class FeedbackResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('phone'),
+                Tables\Columns\TextColumn::make('subject'),
+                Tables\Columns\TextColumn::make('message'),
+                Tables\Columns\TextColumn::make('received_on'),
             ])
             ->filters([
                 //
@@ -61,7 +81,6 @@ class FeedbackResource extends Resource
             'index' => Pages\ListFeedback::route('/'),
             'create' => Pages\CreateFeedback::route('/create'),
             'view' => Pages\ViewFeedback::route('/{record}'),
-            'edit' => Pages\EditFeedback::route('/{record}/edit'),
         ];
     }
 }

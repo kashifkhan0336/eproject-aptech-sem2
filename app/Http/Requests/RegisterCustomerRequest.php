@@ -24,7 +24,11 @@ class RegisterCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'username' => 'required|min:6|unique:customers',
+            'password' => 'required|min:8|max:64',
+            'firstName'=> 'required|max:50',
+            'lastName' => 'required|max:50',
+            'email'    => 'required|max:254|email|unique:customers'
         ];
     }
 }

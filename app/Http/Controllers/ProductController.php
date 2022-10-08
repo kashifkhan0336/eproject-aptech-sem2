@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ProductController extends Controller
 {
@@ -44,11 +45,20 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $productInstance = new Product();
+        $product = $productInstance->where("product_id", $id)->first();
+        #return $product; //[0]->getMedia("main-image")[0]->getFullUrl();
+        return view("product.single-product", ["product"=>$product]);
         //
     }
-
+    public function allProducts()
+    {
+        $productInstance = new Product();
+        $products = $productInstance::all();
+        return view("product.products-all", ["allProducts"=>$products]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

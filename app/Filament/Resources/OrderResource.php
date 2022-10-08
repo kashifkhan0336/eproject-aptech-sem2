@@ -29,7 +29,7 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('user_id')
+                TextInput::make('customer_id')
                     ->required(),
                 TextInput::make('product_id')
                     ->required(),

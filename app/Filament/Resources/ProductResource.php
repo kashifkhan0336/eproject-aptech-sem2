@@ -37,17 +37,19 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('price')
                     ->required(),
                 Forms\Components\TextInput::make('stock')
+                    ->integer()
                     ->required(),
                 Forms\Components\TextInput::make('product_number')
+                    ->integer()
                     ->required()
-                    ->minValue(5)
-                    ->maxValue(5)
+                    ->length(5)
                     ->unique(ignorable: fn ($record) => $record),
                 Forms\Components\TextInput::make('product_code')
+                    ->integer()
                     ->required()
-                    ->minValue(2)
-                    ->maxValue(2),
-                Forms\Components\Section::make('Images')
+                    ->length(2),
+                Forms\Components\TextInput::make("product_id")->disabled()->helperText("AUTO GENERATED"),
+                Forms\Components\Section::make('Main Image')
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('media')
                             ->collection('main-image')
@@ -75,7 +77,7 @@ class ProductResource extends Resource
                     ->collection('main-image'),
                 Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('desc'),
+                Tables\Columns\TextColumn::make('desc')->visible(false),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('stock'),
                 Tables\Columns\TextColumn::make('product_number'),

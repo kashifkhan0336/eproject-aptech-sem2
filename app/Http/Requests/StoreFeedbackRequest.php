@@ -13,7 +13,7 @@ class StoreFeedbackRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,6 +24,11 @@ class StoreFeedbackRequest extends FormRequest
     public function rules()
     {
         return [
+            "name"=>"required|max:65",
+            "email"=>"required|email|max:254",
+            "phone"=>"required|max:15",
+            "subject"=>"required|max:65",
+            "message"=>"required|max:700"
             //
         ];
     }

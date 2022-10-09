@@ -7,22 +7,9 @@
 <div id="wrapper" class="wrapper">
 
     <!-- Header -->
-    @include("partials.header")
+    @section("partials.header")
     <!--// Header -->
 
-    <!-- Breadcrumb Area -->
-    <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="assets/images/breadcrumb-bg.jpg">
-        <div class="container">
-            <div class="tm-breadcrumb">
-                <h2>Login & Register</h2>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Login & Register</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--// Breadcrumb Area -->
 
     <!-- Page Content -->
     <main class="page-content">

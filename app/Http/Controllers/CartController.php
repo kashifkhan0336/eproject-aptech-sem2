@@ -50,7 +50,7 @@ class CartController extends Controller
         $customer = Auth::user();
         $productInstance = new Product();
         $product = $productInstance::where("product_id", $product_id)->first();
-        $customer->cart()->create(["customer_id" => $customer->id, "product_id" => $product->id]);
+        $customer->cart()->create(["customer_id" => $customer->id, "product_id" => $product->product_id]);
         return "Product added!";
     }
 

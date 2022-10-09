@@ -19,9 +19,9 @@ return new class extends Migration
             $table->integer("delivery_type");
             $table->string("status")->default("pending");
             $table->bigInteger("product_id")->unsigned();
-            $table->integer("order_number")->unique();
+            $table->bigInteger("order_number")->unique();
             $table->foreign("customer_id")->references("id")->on("customers");
-            $table->foreign("product_id")->references("id")->on("products");
+            $table->foreign("product_id")->references("product_id")->on("products");
             $table->timestamp("ordered_on")->useCurrent();
             $table->timestamps();
         });

@@ -32,7 +32,6 @@ class   AppServiceProvider extends ServiceProvider
             return $category;
         });
         $featured_products = collect($product::where("is_featured", "1")->get())->map(function ($product){
-            $product["main_image"] = $product->getMedia("main-image")[0]->getFullUrl("thumb");
             return $product;
 
         });

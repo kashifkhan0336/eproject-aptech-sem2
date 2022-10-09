@@ -11,7 +11,7 @@
                     <div class="tm-header-options">
 
                             @guest()
-                                <a href="{{ route("customer.login-signup") }}">Login/Register</a>
+                                <a href="{{ route("customer.login-signup") }}">Login/Register1</a>
                             @endguest
                             @auth()
                                 @if(Auth::user()->role != "dealer")
@@ -41,7 +41,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-6 order-1 order-lg-1">
                     <a href="/" class="tm-header-logo">
-                        <img src="assets/images/logo.png" alt="surose">
+                        <h3>Arts Shop</h3>
                     </a>
                 </div>
                 <div class="col-lg-6 col-12 order-3 order-lg-2">

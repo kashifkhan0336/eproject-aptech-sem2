@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\CustomerResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
@@ -20,9 +22,23 @@ class OrdersRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                TextInput::make('customer_id')
+                    ->required(),
+                TextInput::make('product_id')
+                    ->required(),
+                Select::make('delivery_type')
+                    ->options(['1'=>"Easypaisa/Jazz Cash",'2'=>"Cash on delivery","3"=>"Credit/Debit card"])
+                    ->required(),
+                Select::make('status')
+                    ->options(['pending'=>"Pending",'dispatched'=>"Dispatched","delivered"=>"Delivered"])
+                    ->required(),
+
+
                 Forms\Components\TextInput::make('order_number')
-                    ->required()
-                    ->maxLength(255),
+                    ->disabled()
+                    ->helperText("AUTO GENERATED"),
+                Forms\Components\DateTimePicker::make('ordered_on')
+                    ->required(),
             ]);
     }
 
